@@ -4,22 +4,18 @@ import * as React from 'react';
 import RouterLink from 'next/link';
 import { usePathname } from 'next/navigation';
 import Box from '@mui/material/Box';
-// import Button from '@mui/material/Button';y
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-// import { ArrowSquareUpRight as ArrowSquareUpRightIcon } from '@phosphor-icons/react/dist/ssr/ArrowSquareUpRight';
-// import { CaretUpDown as CaretUpDownIcon } from '@phosphor-icons/react/dist/ssr/CaretUpDown';
+import { Car } from '@phosphor-icons/react/dist/ssr';
 
 import type { NavItemConfig } from '@/types/nav';
 import { paths } from '@/paths';
 import { isNavItemActive } from '@/lib/is-nav-item-active';
-// import { Logo } from '@/components/core/logo';
 
 import { navItems } from './config';
 import { navIcons } from './nav-icons';
-import { Car } from '@phosphor-icons/react/dist/ssr';
 
 export interface MobileNavProps {
   onClose?: () => void;
@@ -59,32 +55,16 @@ export function MobileNav({ open, onClose }: MobileNavProps): React.JSX.Element 
       open={open}
     >
       <Stack spacing={2} sx={{ p: 3 }}>
-        <Box component={RouterLink} href={paths.home} sx={{ display: 'flex', alignItems: 'center',textDecoration: 'none', color: 'white' }}>
-          {/* <Logo color="light" height={32} width={122} /> */}
-          <Car size={32} />
-          <Typography sx={{marginLeft: '5px'}} fontSize={24}>TadiMoyka</Typography>
-        </Box>
-        {/* <Box
-          sx={{
-            alignItems: 'center',
-            backgroundColor: 'var(--mui-palette-neutral-950)',
-            border: '1px solid var(--mui-palette-neutral-700)',
-            borderRadius: '12px',
-            cursor: 'pointer',
-            display: 'flex',
-            p: '4px 12px',
-          }}
+        <Box
+          component={RouterLink}
+          href={paths.home}
+          sx={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'white' }}
         >
-          <Box sx={{ flex: '1 1 auto' }}>
-            <Typography color="var(--mui-palette-neutral-400)" variant="body2">
-              Workspace
-            </Typography>
-            <Typography color="inherit" variant="subtitle1">
-              Devias
-            </Typography>
-          </Box>
-          <CaretUpDownIcon />
-        </Box> */}
+          <Car size={32} />
+          <Typography sx={{ marginLeft: '5px' }} fontSize={24}>
+            TadiMoyka
+          </Typography>
+        </Box>
       </Stack>
       <Divider sx={{ borderColor: 'var(--mui-palette-neutral-700)' }} />
       <Box component="nav" sx={{ flex: '1 1 auto', p: '12px' }}>
@@ -131,11 +111,11 @@ interface NavItemProps extends Omit<NavItemConfig, 'items'> {
 function NavItem({ disabled, external, href, icon, matcher, pathname, title }: NavItemProps): React.JSX.Element {
   const active = isNavItemActive({ disabled, external, href, matcher, pathname });
   const Icon = icon ? navIcons[icon] : null;
-  const handleClick = () => {
+  const handleClick = (): void => {
     if (title === 'Sign Out') {
       localStorage.clear();
       window.location.reload();
-    } 
+    }
   };
   return (
     <li>
@@ -147,7 +127,7 @@ function NavItem({ disabled, external, href, icon, matcher, pathname, title }: N
               target: external ? '_blank' : undefined,
               rel: external ? 'noreferrer' : undefined,
             }
-            : { role: 'button', onClick: handleClick })}
+          : { role: 'button', onClick: handleClick })}
         sx={{
           alignItems: 'center',
           borderRadius: 1,

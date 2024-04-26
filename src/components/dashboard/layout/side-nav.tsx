@@ -7,13 +7,14 @@ import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import { Car } from '@phosphor-icons/react';
 
 import type { NavItemConfig } from '@/types/nav';
 import { paths } from '@/paths';
 import { isNavItemActive } from '@/lib/is-nav-item-active';
+
 import { navItems } from './config';
 import { navIcons } from './nav-icons';
-import { Car } from '@phosphor-icons/react';
 
 export function SideNav(): React.JSX.Element {
   const pathname = usePathname();
@@ -47,9 +48,15 @@ export function SideNav(): React.JSX.Element {
       }}
     >
       <Stack spacing={2} sx={{ p: 3 }}>
-        <Box component={RouterLink} href={paths.home} sx={{ display: 'flex', alignItems: 'center',textDecoration: 'none', color: 'white' }}>
+        <Box
+          component={RouterLink}
+          href={paths.home}
+          sx={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'white' }}
+        >
           <Car size={32} />
-          <Typography sx={{marginLeft: '5px'}} fontSize={24}>TadiMoyka</Typography>
+          <Typography sx={{ marginLeft: '5px' }} fontSize={24}>
+            TadiMoyka
+          </Typography>
         </Box>
       </Stack>
       <Divider sx={{ borderColor: 'var(--mui-palette-neutral-700)' }} />
@@ -97,8 +104,8 @@ interface NavItemProps extends Omit<NavItemConfig, 'items'> {
 function NavItem({ disabled, external, href, icon, matcher, pathname, title }: NavItemProps): React.JSX.Element {
   const active = isNavItemActive({ disabled, external, href, matcher, pathname });
   const Icon = icon ? navIcons[icon] : null;
- 
-  const handleClick = () => {
+
+  const handleClick = (): void => {
     if (title === 'Sign Out') {
       localStorage.clear();
       window.location.reload();
@@ -114,7 +121,7 @@ function NavItem({ disabled, external, href, icon, matcher, pathname, title }: N
               target: external ? '_blank' : undefined,
               rel: external ? 'noreferrer' : undefined,
             }
-           : { role: 'button', onClick: handleClick })}
+          : { role: 'button', onClick: handleClick })}
         sx={{
           alignItems: 'center',
           borderRadius: 1,
