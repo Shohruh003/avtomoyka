@@ -22,13 +22,13 @@ export function Budget({ sx }: BudgetProps): React.JSX.Element {
           <Stack direction="row" sx={{ alignItems: 'center', justifyContent: 'space-between' }} spacing={3}>
             <Stack spacing={1}>
               <Typography color="text.secondary" variant="overline">
-              въезд
+                въезд
               </Typography>
               <VideoCameraSlash size={100} />
             </Stack>
             <Typography color="text.secondary" variant="overline" fontSize={32}>
-            всего тс -  400
-              </Typography>
+              всего тс - 400
+            </Typography>
           </Stack>
         </Stack>
       </CardContent>

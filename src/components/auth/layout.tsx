@@ -4,7 +4,6 @@ import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { paths } from '@/paths';
-// import { DynamicLogo } from '@/components/core/logo';
 import { Car } from '@phosphor-icons/react/dist/ssr';
 
 export interface LayoutProps {
@@ -24,7 +23,6 @@ export function Layout({ children }: LayoutProps): React.JSX.Element {
       <Box sx={{ display: 'flex', flex: '1 1 auto', flexDirection: 'column' }}>
         <Box sx={{ p: 3 }}>
             <Box component={RouterLink} href={paths.home} sx={{ display: 'flex', alignItems: 'center',textDecoration: 'none', color: 'black', fontWeight: 'bold' }}>
-          {/* <Logo color="light" height={32} width={122} /> */}
           <Car size={32} />
           <Typography sx={{marginLeft: '5px'}} fontSize={24}>TadiMoyka</Typography>
         </Box>
